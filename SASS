@@ -1,0 +1,78 @@
+SASS
+1. Variables -
+$color: #00f005
+
+HTDUC - Where same value for a property is being used at multiple places, like the background color of buttons everywhere are same, the font-size for headings, subheadings, color of font is same
+
+2. Sass Maps -
+$colors: (
+  primary: #00f005,
+  secondary: #0f0f0f
+)
+
+HTDUC - Colors of different buttons - Primary, secondary, disabled, danger, warning
+
+3. Nesting -
+body {    
+  color: red,    
+  ul {        
+    font-size: 20px    
+  }
+}
+
+HTDUC - Can be shown anywhere, Navbar is a good example
+
+4. Functions - Many different use cases
+@function color($color-name) {    
+  // $colors is the MAP
+  @return map-get($colors, $color-name)
+}
+How to call -
+color(primary)
+* There are also pre-defined functions, have a look
+
+5. Mixins - Many different use cases
+Mixins is just some reusable piece of code. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can also pass in values to the mixins, so they're sort of a function.
+How to create mixin
+@mixin border($width, $color) {
+  border-width: $width;
+  border-color: $color;
+}
+
+How to use mixin
+.box {
+  @include border(2, "black");
+}
+* Mixins can be included in mixins also
+
+Difference between Function and MIXIN - Function is used to return a value, so you can get a value and set it as value for a property, Mixin on the other hand allows you to add full properties, or a set of full property. Mixin and function both take parameters
+
+6. Extensions
+
+7. Inheritance
+
+8. Partials - Dividing sass code into files, and including them in other files, this makes it modular. The Partials(the files) must start with an _(underscore). This makes sure that sass doesn't create a separate file for the partial, and only uses it to include in other sass files.
+You can import a partial using the @use rule syntax
+Ex. _base.scss file has to be imported in styles.scss
+In styles.scss
+@use 'base';
+
+
+9. Placeholder classes - 7. Inheritance - Same thing
+prints only when extended with the @extend rule
+* Simply borrowing, extending styles from one class into another, like a parent and child class
+
+10. Operators -
++, -, *, /, and, or
+
+11. How to add media queries
+
+To-read
+1. Variables in Native CSS
+2. SCSS vs SASS vs LESS
+3. Difference between @use and @import
+4. Multiple layers of extension with @extend
+
+
+
+"HTDUC" - How to demonstrate / Use case

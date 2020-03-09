@@ -1,0 +1,91 @@
+@use 'variables';
+
+@each $font in $fonts {
+  .font-#{$font} {
+    font-size: $font + rem;
+  }
+}
+
+@function getColor($colors, $color) {
+  @if $color==primary {
+    @return map-get($map: $colors, $key: success)
+  }
+
+  @else {
+    @return map-get($map: $colors, $key: $color);
+  }
+}
+
+@mixin paddingMixin {
+  padding: 1rem;
+}
+
+@mixin flex($direction, $JC, $AI: center) {
+  @include paddingMixin();
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $JC;
+  align-items: $AI;
+}
+
+.primary {
+  color: black;
+  background-color: getColor($colors, primary);
+  border: 2px solid;
+  border-color: getColor($borderColors, primary);
+  @include flex(row, center, center);
+}
+
+.secondary {
+  color: white;
+  background-color: getColor($colors, secondary);
+  border: 2px solid;
+  border-color: getColor($borderColors, secondary);
+  @include flex(row, center, center);
+}
+
+.warning {
+  color: white;
+  background-color: getColor($colors, warning);
+  border: 2px solid;
+  border-color: getColor($borderColors, warning);
+  @include flex(row, center, center);
+}
+
+.danger {
+  color: white;
+  background-color: getColor($colors, danger);
+  border: 2px solid;
+  border-color: getColor($borderColors, danger);
+  @include flex(row, center, center);
+}
+
+.description {
+  font-size: 20px;
+  padding: 1rem;
+  width: 50%;
+  @include flex(column, center);
+
+  .submit {
+    font-size: 20px;
+    background-color: green;
+
+    .span {
+      font-size: (4 * 10) + px;
+    }
+  }
+}
+
+// .description .submit {
+//   font-size: 20px;
+//   background-color: green;
+// }
+
+// 1. Variables - $str: green, $num: 5, $arr: 1,2,3,4, $map: (key1: val1, key2: val2), $show: false
+// 2. Operators - +, -, *, /, str + concatenation
+// 3. Functions - @function { @return }
+// 4. Loops - @each $item in $arr {}
+// 5. Conditions - @if {}, @else {}
+// 6. Nesting of styles
+// 7. MIXINS - display, jus, ali, flex-direction
+// 8. Partials/Modules - Dividing the code into different files, @use
